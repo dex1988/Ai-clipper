@@ -1,7 +1,6 @@
 import { t } from '../i18n'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
-import LanguageSelect from './LanguageSelect'
 import { Layout, Button } from 'antd'
 import { SettingOutlined, BulbOutlined, MoonOutlined } from '@ant-design/icons'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -94,7 +93,6 @@ const Header: React.FC = () => {
           </div>
         )}
         <div className="ac-header-permanent">
-        <LanguageSelect />
         {/* 返回入口由各页面页头承担（见 DESIGN.md App Layer），顶栏只留全局动作 */}
         <Button
           type="text"

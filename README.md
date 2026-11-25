@@ -252,17 +252,46 @@ Browse 16+ clips, covers, and post copy in the **[Showcase →](https://zhouxiao
 
 ## Quick Start
 
-| Use case | Recommended setup | Requirements |
+**New here? Use the desktop app.** You do not need to know Python, Docker, FFmpeg, or command lines.
+
+| Your situation | Start here | What you need |
 | :--- | :--- | :--- |
-| **Desktop app (easiest)** | Download `.dmg` / `-setup.exe` from [Releases](https://github.com/zhouxiaoka/autoclip/releases/latest) | Apple Silicon macOS or Windows 10/11 x64 (Python &amp; FFmpeg bundled) |
-| **AI agents / CLI / MCP** | `uvx autoclip-mcp` or `npx skills add zhouxiaoka/autoclip` | Python 3.10+ (3.11 recommended) &amp; FFmpeg |
-| **Self-hosted / Linux / Intel Mac** | `docker compose up -d --build` | Docker &amp; Compose v2 |
+| **Apple Silicon Mac or Windows PC** | Desktop app | macOS on Apple Silicon, or Windows 10/11 x64 |
+| **Linux, Intel Mac, or server** | Docker | Docker Desktop or Docker Engine with Compose v2 |
+| **Developer or AI-agent workflow** | CLI / MCP | Python 3.10+ (3.11 recommended) and FFmpeg |
+
+If you only want to try AutoClip, follow [Desktop App: step by step](docs/USER_INSTALLATION_GUIDE.en.md#desktop-app-step-by-step).
 
 ### 1. Desktop App
 
-1. Download the latest installer from **[GitHub Releases](https://github.com/zhouxiaoka/autoclip/releases/latest)** (`aarch64.dmg` for Apple Silicon macOS, `x64-setup.exe` for Windows). Portable Python and FFmpeg are bundled.
-2. Open **Settings**, pick a cloud provider (or start Ollama / LM Studio), test the connection, and save — or click **Try the built-in example** with no API key.
-3. Paste a video link, drop a file, or switch to **Live Replay** to connect OBS or import a stream recording. Pick your platforms and click **Generate**.
+#### macOS
+
+1. Open **[GitHub Releases](https://github.com/zhouxiaoka/autoclip/releases/latest)**.
+2. Under **Assets**, download the file whose name contains `aarch64.dmg`.
+3. Open the downloaded `.dmg`.
+4. Drag **AutoClip Desktop** into **Applications**.
+5. Open **Applications**, right-click or Control-click **AutoClip Desktop**, choose **Open**, then confirm. This extra step is only needed because the installer is not Apple-notarized yet.
+6. Open **Settings → AI Models**, choose a provider, enter your API key, test the connection, and save. If you prefer not to add a key yet, use the built-in example.
+
+#### Windows
+
+1. Open **[GitHub Releases](https://github.com/zhouxiaoka/autoclip/releases/latest)**.
+2. Under **Assets**, download the file whose name contains `x64-setup.exe`.
+3. Double-click the downloaded installer and follow the prompts.
+4. Open AutoClip from the Start menu.
+5. Open **Settings → AI Models**, choose a provider, enter your API key, test the connection, and save. If you prefer not to add a key yet, use the built-in example.
+6. If Windows SmartScreen shows **More info**, confirm that the file came from this AutoClip Releases page, then choose **Run anyway**.
+
+**First successful clip**
+
+1. Paste a link or choose a local video.
+2. Add an `.srt` subtitle file if you have one.
+3. Choose the platform for the finished clip.
+4. Confirm the production type.
+5. Click **Generate**.
+6. Wait for processing to finish, then preview or download the result.
+
+Portable Python and FFmpeg are included in the desktop installer. You do not need to install them separately.
 
 > Installers are built publicly on GitHub Actions (`Desktop Build`) with `build-provenance.json` SHA-256 verification. Code signing and Apple notarization are tracked in [#119](https://github.com/zhouxiaoka/autoclip/issues/119).
 
@@ -297,6 +326,23 @@ To build a local MCPB bundle without publishing, run `python scripts/pack_mcpb.p
 
 ### 3. Docker / Web
 
+Use Docker only if you cannot use the desktop installer.
+
+#### 1. Install Docker
+
+1. Install Docker Desktop on macOS or Windows, or Docker Engine on Linux.
+2. Start Docker.
+3. Confirm Docker is running:
+
+```bash
+docker --version
+docker compose version
+```
+
+Both commands should print a version. If they report “not found,” restart Docker or install it again before continuing.
+
+#### 2. Download and start AutoClip
+
 ```bash
 git clone https://github.com/zhouxiaoka/autoclip.git
 cd autoclip
@@ -305,7 +351,24 @@ mkdir -p data logs uploads
 docker compose up -d --build
 ```
 
-Open the web UI at `http://localhost:3000` (API docs at `http://localhost:8000/docs`). See [Docker Guide](docs/DOCKER.en.md) for bind-mount permissions and custom origins.
+Wait until the command finishes. Then verify the containers:
+
+```bash
+docker compose ps
+```
+
+The app containers should not be in a restarting or exited state.
+
+#### 3. Open and configure
+
+1. Open `http://localhost:3000`.
+2. Open **Settings → AI Models**.
+3. Add and test a provider, or use the built-in example if the example is available.
+4. Upload or link a video and create your first clip.
+
+API documentation is at `http://localhost:8000/docs`. Do not open Redis or Flower ports to the public internet.
+
+For permissions, backups, updates, and troubleshooting, follow the [Docker Guide](docs/DOCKER.en.md).
 
 ---
 

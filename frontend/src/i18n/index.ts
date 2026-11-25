@@ -57,13 +57,10 @@ const updateDocument = () => {
 updateDocument()
 i18n.on('languageChanged', updateDocument)
 
-export async function setLanguage(preference: LanguagePreference) {
-  currentPreference = preference
-  try { localStorage.setItem(LANGUAGE_STORAGE_KEY, preference) } catch { /* Private/restricted storage: selection still works for this session. */ }
-  await i18n.changeLanguage(resolveLanguage(preference, navigator.languages))
+export async function setLanguage(_preference: LanguagePreference) {
+  currentPreference = 'en'
+  try { localStorage.setItem(LANGUAGE_STORAGE_KEY, 'en') } catch { /* Private/restricted storage: selection still works for this session. */ }
+  await i18n.changeLanguage('en')
 }
-window.addEventListener('languagechange', () => {
-  if (currentPreference === 'system') void i18n.changeLanguage(resolveLanguage('system', navigator.languages))
-})
 
 export default i18n

@@ -30,6 +30,7 @@ import { useProjectPolling } from '../hooks/useProjectPolling'
 import { apiConfigManager } from '../utils/apiConfig'
 import FailureHint from '../features/diagnostics/FailureHint'
 import { nextLiveFailure } from '../features/diagnostics/failureHintPolicy'
+import { matchesProjectStatus } from '../utils/projectStatus'
 
 const { Content } = Layout
 const { Title, Text } = Typography
@@ -216,10 +217,7 @@ export default function HomePage() {
   const pendingImports = projects.filter(needsImportConfirmation)
   const filteredProjects = (projects || [])
     .filter(p => !needsImportConfirmation(p))
-    .filter(project => {
-      const matchesStatus = !statusFilter || statusFilter === 'all' || project.status === statusFilter || (statusFilter === 'error' && project.status === 'failed')
-      return matchesStatus
-    })
+    .filter(project => matchesProjectStatus(project.status, statusFilter))
     .sort((a, b) => {
       // 按创建时间倒序排列，最新的在前面
       return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
@@ -308,7 +306,12 @@ export default function HomePage() {
                      </div>
                    </div>
                  ) : (
-                   <div className="ac-empty"><b>{t("没有找到匹配的项目")}</b></div>
+                   <div className="ac-empty">
+                     <b>{t("没有找到匹配的项目")}</b>
+                     <div style={{ marginTop: 18 }}>
+                       <Btn size="sm" onClick={() => setStatusFilter('all')}>{t("查看全部项目")}</Btn>
+                     </div>
+                   </div>
                  )
                ) : (
                  <div style={{

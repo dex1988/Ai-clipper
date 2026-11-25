@@ -427,7 +427,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onDelete, onRetry, o
         <div className="ac-card-body">
           {failed ? (
             <div className="ac-failure-heading">
-              <h3 className="ac-card-title" title={project.name}>{project.name}</h3>
+              <button type="button" className="ac-project-title" onClick={openProject} title={project.name}>
+                <span className="ac-card-title">{project.name}</span>
+              </button>
               <StatusDot tone="error" label={t("处理失败")} />
             </div>
           ) : (

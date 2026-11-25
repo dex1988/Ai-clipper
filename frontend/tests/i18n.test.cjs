@@ -27,25 +27,18 @@ function loadResolver(storage) {
   runInSandbox(code, {module, exports:module.exports, localStorage:storage})
   return module.exports
 }
-test('locale detection respects saved preference, regional variants and ordered system languages', () => {
+test('English is fixed regardless of saved preference or system language', () => {
   const {resolveLanguage} = loadResolver({getItem:()=>null})
-  assert.equal(resolveLanguage('fr', ['es-MX']), 'fr')
-  for (const tag of ['es-MX','es-419','es-ES']) assert.equal(resolveLanguage('system', [tag]), 'es')
-  for (const tag of ['pt-BR','pt-PT']) assert.equal(resolveLanguage(null, [tag]), 'pt')
-  assert.equal(resolveLanguage(null, ['ar-SA', 'ru-RU', 'en']), 'ru')
-  assert.equal(resolveLanguage('__proto__', ['zh-TW']), 'zh-TW')
-  for (const tag of ['zh-TW','zh-HK','zh-MO','zh-Hant','zh-Hant-TW','zh_TW']) assert.equal(resolveLanguage(null, [tag]), 'zh-TW')
-  for (const tag of ['zh-CN','zh-SG','zh-Hans','zh']) assert.equal(resolveLanguage(null, [tag]), 'zh')
-  assert.equal(resolveLanguage(null, ['de-DE']), 'de')
-  assert.equal(resolveLanguage(null, ['id-ID']), 'id')
-  assert.equal(resolveLanguage(null, ['tr-TR']), 'tr')
-  assert.equal(resolveLanguage(null, ['vi-VN']), 'vi')
-  assert.equal(resolveLanguage(null, ['nl-NL']), 'en')
+  assert.equal(resolveLanguage('fr', ['es-MX']), 'en')
+  assert.equal(resolveLanguage('system', ['zh-CN']), 'en')
+  assert.equal(resolveLanguage('__proto__', ['zh-TW']), 'en')
+  assert.equal(resolveLanguage(null, ['de-DE']), 'en')
+  assert.equal(resolveLanguage(null, ['ja-JP']), 'en')
 })
-test('unavailable or corrupt storage falls back to system language', () => {
-  assert.equal(loadResolver({getItem:()=>{throw Error('denied')}}).readPreference(), 'system')
-  assert.equal(loadResolver({getItem:()=> 'unknown'}).readPreference(), 'system')
-  assert.equal(loadResolver({getItem:()=> 'ko'}).readPreference(), 'ko')
+test('English remains fixed when preference storage is unavailable or has another language', () => {
+  assert.equal(loadResolver({getItem:()=>{throw Error('denied')}}).readPreference(), 'en')
+  assert.equal(loadResolver({getItem:()=> 'unknown'}).readPreference(), 'en')
+  assert.equal(loadResolver({getItem:()=> 'ko'}).readPreference(), 'en')
 })
 test('every catalog covers exactly the same messages and preserves interpolation variables', () => {
   const keys = Object.keys(catalogs.zh).sort()
