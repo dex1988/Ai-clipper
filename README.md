@@ -26,9 +26,6 @@ can review, edit, and share.
   **Call to action**—to help plan scene order. These are notes for editing;
   they do not add text to the exported video or block export when left blank.
 
-Some in-app names or assets may still use legacy branding; this README
-describes the repository's current name, not a complete in-app rebrand.
-
 ## What the app does
 
 - Finds candidate moments in interviews, podcasts, talks, courses, and
