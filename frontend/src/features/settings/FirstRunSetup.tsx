@@ -216,7 +216,7 @@ export default function FirstRunSetup({ onStatus, openRequest = 0 }: { onStatus?
   const connecting = step === 'connect' && !!main
 
   return <Dialog open={open} onClose={later} title={t('选择 AI 服务商')}
-    description={connecting ? (choice === 'other' || !liveLink ? t('把 API 密钥粘贴到下方即可。') : t('在浏览器完成注册后，把 API 密钥粘贴到下方。')) : undefined}
+    description={connecting ? (choice === 'other' || !liveLink ? t('把 API 密钥粘贴到下方即可。') : t('在浏览器完成注册后，把 API 密钥粘贴到下方。')) : t('选一个推荐服务商，填入密钥并保存。完成后就可以导入视频。')}
     footer={<div className="ac-setup-foot">
       {connecting
         ? <Btn variant="text" size="sm" disabled={m.saving} onClick={() => setStep('choose')}>{t('返回')}</Btn>
@@ -261,6 +261,7 @@ export default function FirstRunSetup({ onStatus, openRequest = 0 }: { onStatus?
             })}
           </div>
           {notices[choice] && <p className="ac-note">{notices[choice][noticeLanguage] || notices[choice].en || notices[choice].zh}</p>}
+          <p className="ac-note">{t('费用按你配置的模型服务商计费。先用字幕分析跑通，再按素材决定要不要让 AI 看画面。')}</p>
           <p className="ac-note">{t('可随时在设置中更换')}</p>
           {choice === 'other' && <p className="ac-note"><button type="button" className="ac-link-button" onClick={goSettings}>{t('去设置选择其他服务商')}</button></p>}
         </>}

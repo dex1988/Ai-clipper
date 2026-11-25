@@ -156,6 +156,7 @@ export default function ImportSetupCard({ onExample, exampleBusy = false, keptMa
     <div>
       <h2>{t('先连接 AI 服务')}</h2>
       <p className="studio-muted">{t('选一个推荐服务商，填入密钥并保存。完成后就可以导入视频。')}</p>
+      <p className="studio-muted">{t('费用按你配置的模型服务商计费。先用字幕分析跑通，再按素材决定要不要让 AI 看画面。')}</p>
     </div>
     <ol className="ac-import-steps">
       {STEPS.map((name, at) => <li key={name} data-current={name === step ? 'true' : undefined} data-done={at < index ? 'true' : undefined}>{at + 1} {STEP_LABEL[name]()}</li>)}

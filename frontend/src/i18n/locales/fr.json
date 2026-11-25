@@ -1059,6 +1059,7 @@
   "追加一个镜头": "Ajouter une scène",
   "替换当前镜头": "Remplacer la scène actuelle",
   "从当前素材的高光和已有切片中选择。先预览，再加入成片；修改保存后生效。": "Choisissez parmi les moments forts et clips existants. Prévisualisez avant d’ajouter, puis enregistrez.",
+  "选择多个高光，按选择顺序加入成片。": "Sélectionnez plusieurs moments : ils seront ajoutés à votre montage dans l’ordre choisi.",
   "追加到成片": "Ajouter à la vidéo",
   "替换镜头": "Remplacer la scène",
   "加载可用片段…": "Chargement des clips disponibles…",

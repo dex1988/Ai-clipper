@@ -166,6 +166,10 @@ export function applyCandidate(draft: Draft, candidate: Candidate, target: numbe
   return result
 }
 
+export function appendCandidates(draft: Draft, candidates: Candidate[], createId: () => string): Draft {
+  return candidates.reduce((result, candidate) => applyCandidate(result, candidate, 'append', createId()), draft)
+}
+
 /** Phone-friendly defaults: fill the frame and use large captions. The title look only changes when there is an opening title. */
 export function portraitDesign(draft: Draft): Draft {
   const withTitle = draft.hook.trim() ? { title_style: 'comic' as const, title_template_version: 6 as const } : {}

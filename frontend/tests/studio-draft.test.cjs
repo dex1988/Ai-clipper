@@ -23,6 +23,16 @@ test('appending the same source twice gives independent scene identities and enf
  assert.throws(()=>applyCandidate(draft,candidate,99,'bad'),/不存在/)
  assert.ok(draftError(next,8));assert.equal(draftError(next,10),null)
 })
+test('multi-candidate append preserves chosen order and rejects an over-limit update atomically',()=>{
+ let id=0
+ const second={...candidate,id:'second',label:'Payoff',start:12,end:16}
+ const next=m.exports.appendCandidates(draft,[candidate,second],()=>`added-${++id}`)
+ assert.deepEqual(next.scenes.slice(-2).map(scene=>[scene.id,scene.label]),[['added-1','Obstacle'],['added-2','Payoff']])
+ assert.equal(draft.scenes.length,2)
+ const full={...draft,scenes:Array(29).fill(draft.scenes[0])}
+ assert.throws(()=>m.exports.appendCandidates(full,[candidate,second],()=>`added-${++id}`),/30/)
+ assert.equal(full.scenes.length,29)
+})
 
 test('portrait recommendation updates composition and captions without modifying source or language',()=>{
  const original={...draft,language:'en',aspect:'landscape',layout:'fit',hook:''}

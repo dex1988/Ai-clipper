@@ -71,6 +71,8 @@ test('the import card walks provider, key and connect, and the example path need
     const root = createRoot(host)
     await act(async () => { root.render(React.createElement(Card, { onExample: () => examples.push('open'), keptMaterial: true })) })
     assert.equal(host.textContent.includes('先连接 AI 服务'), true)
+    assert.equal(host.textContent.includes('选一个推荐服务商，填入密钥并保存。完成后就可以导入视频。'), true)
+    assert.equal(host.textContent.includes('费用按你配置的模型服务商计费。先用字幕分析跑通，再按素材决定要不要让 AI 看画面。'), true)
     assert.equal(host.textContent.includes('先用示例视频看看效果'), true)
     assert.equal(host.textContent.includes('刚才的链接或文件会留着'), true)
     assert.equal(events.some(item => item.event === 'setup_presented' && item.props.placement === 'import_card' && item.props.trigger === 'initial'), true)

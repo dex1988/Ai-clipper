@@ -10,7 +10,7 @@ import StudioPublishPreview from './StudioPublishPreview'
 import { outputAnalytics, studioPublishPreviewPath } from './outputVariantPublish'
 import PlayerBar from './PlayerBar'
 import ExportCover, { ExportCoverButton } from './ExportCover'
-import { CropPoint, Draft, Scene, SubtitleCue, languages, draftDuration, draftError, moveScene, applyCandidate, portraitDesign, cropAt, frameModeAt, patchShot } from './types'
+import { CropPoint, Draft, Scene, SubtitleCue, languages, draftDuration, draftError, moveScene, applyCandidate, appendCandidates, portraitDesign, cropAt, frameModeAt, patchShot } from './types'
 import CandidatePicker from './CandidatePicker'
 import TitleArtwork from './TitleArtwork'
 import DraftVariantDialog from './DraftVariantDialog'
@@ -263,10 +263,13 @@ function Editor({ projectId, draftId }: { projectId: string; draftId: string }) 
     {currentJob?.status==='failed' && <p className="studio-error" role="alert">{t(currentJob.error || '')}</p>}
     {currentJob?.result?.warnings?.map(w=><p className="studio-muted" key={w}>{t(w)}</p>)}
     {error && <p className="studio-error" role="alert">{error}</p>}<p className="studio-muted" role="status">{t(notice)}</p>
-    {picker !== null && <CandidatePicker projectId={projectId} mode={picker === 'append' ? 'append' : 'replace'} onClose={() => setPicker(null)} onChoose={candidate => {
+    {picker !== null && <CandidatePicker projectId={projectId} mode={picker === 'append' ? 'append' : 'replace'} maxSelections={30 - draft.scenes.length} onClose={() => setPicker(null)} onChoose={candidate => {
       try {
-        const next = applyCandidate(draft, candidate, picker, crypto.randomUUID())
-        setUndo(draft); patch({ scenes: next.scenes }); setSelected(picker === 'append' ? draft.scenes.length : picker)
+        const candidates = Array.isArray(candidate) ? candidate : [candidate]
+        const next = picker === 'append'
+          ? appendCandidates(draft, candidates, () => crypto.randomUUID())
+          : applyCandidate(draft, candidates[0], picker, crypto.randomUUID())
+        setUndo(draft); patch({ scenes: next.scenes }); setSelected(picker === 'append' ? next.scenes.length - 1 : picker)
         setPicker(null); setNotice("镜头已更新，请保存后重新渲染。换镜头后请核对开头文案是否仍符合画面。")
       } catch(e) { setPicker(null); setError(t(errorText(e))) }
     }} />}
