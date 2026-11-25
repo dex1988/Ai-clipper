@@ -7,11 +7,8 @@
 AI Clipper helps turn long videos and stream recordings into short clips you
 can review, edit, and share.
 
-[Browse the source](https://github.com/dex1988/Ai-clipper) ·
 [Installation guide](docs/USER_INSTALLATION_GUIDE.en.md) ·
 [Troubleshooting](docs/FAQ.en.md)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
 </div>
 
@@ -19,7 +16,7 @@ can review, edit, and share.
 
 > **No installer packages are published for this repository yet.** The
 > prebuilt packages described in the installation guide are separate builds
-> and do not include changes made only in this source.
+> and do not include changes made only in this repository.
 
 ## What this project includes
 
@@ -52,11 +49,11 @@ your configuration. For details, read the [Privacy Policy](docs/PRIVACY.en.md).
 There are no installers published for this repository yet. The
 [step-by-step installation guide](docs/USER_INSTALLATION_GUIDE.en.md) explains
 the available prebuilt installation option. Those packages are not built from
-this source and do not include repository-specific changes.
+this repository and do not include repository-specific changes.
 
 ### I want to run this version
 
-Running this version requires setting up and building the source code. Start
+Running this version requires setting up and building the project. Start
 with the repository's [contributor guide](CONTRIBUTING.md) and
 [desktop build guide](docs/BUILD_GUIDE.md). These are developer instructions,
 not a one-click beginner installer; the build documentation is currently in
@@ -81,8 +78,3 @@ Chinese.
 | Troubleshoot a problem | [FAQ](docs/FAQ.en.md) |
 | Understand data handling | [Privacy Policy](docs/PRIVACY.en.md) |
 | Build or contribute to this project | [Contributor guide](CONTRIBUTING.md) |
-
-## License
-
-This project is distributed under the MIT License. Copyright and attribution
-notices are retained in [LICENSE](LICENSE).
