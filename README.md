@@ -1,468 +1,154 @@
-<!-- mcp-name: io.github.zhouxiaoka/autoclip-mcp -->
-
 <div align="center">
 
-<img src="src-tauri/icons/128x128.png" alt="AutoClip" width="76" height="76">
+<img src="src-tauri/icons/128x128.png" alt="AutoClip" width="72">
 
 # AutoClip
 
-### Turn any video, link, or live stream into ready-to-post clips.
+### Turn a video or stream replay into clips you can review and share.
 
-Open-source, local-first AI clipping for **podcasts, interviews, and gaming streams** — with smart reframing, captions, covers, and titles built in.
+AutoClip is a free, open-source desktop app that finds moments in long videos, reframes them for social platforms, and helps you export finished clips.
 
-<br>
+[Download AutoClip](https://github.com/zhouxiaoka/autoclip/releases/latest) ·
+[Watch examples](https://zhouxiaoka.github.io/autoclip_intro/cases/?lang=en) ·
+[Installation help](docs/USER_INSTALLATION_GUIDE.en.md) ·
+[Troubleshooting](docs/FAQ.en.md)
 
-<p>
-  <a href="https://github.com/zhouxiaoka/autoclip/releases/latest"><img src="https://img.shields.io/github/v/release/zhouxiaoka/autoclip?style=flat-square&color=4F46E5" alt="GitHub release" height="20"></a>&nbsp;
-  <a href="https://github.com/zhouxiaoka/autoclip/stargazers"><img src="https://img.shields.io/github/stars/zhouxiaoka/autoclip?style=flat-square&color=FFD700&logo=github&logoColor=white&label=Stars" alt="GitHub stars" height="20"></a>&nbsp;
-  <a href="https://github.com/zhouxiaoka/autoclip/releases"><img src="https://img.shields.io/github/downloads/zhouxiaoka/autoclip/total?style=flat-square&color=10B981" alt="Downloads" height="20"></a>&nbsp;
-  <img src="https://img.shields.io/badge/Languages-13-0EA5E9?style=flat-square" alt="13 Languages" height="20">&nbsp;
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License: MIT" height="20"></a>
-</p>
-
-<br>
-
-<p>
-  <a href="https://trendshift.io/repositories/25801"><img src="https://trendshift.io/api/badge/repositories/25801" alt="AutoClip — GitHub Trending" width="250" height="55"></a>
-</p>
-
-<br>
-
-<p>
-  <a href="https://zhouxiaoka.github.io/autoclip_intro/"><strong>Website</strong></a>
-  &nbsp;&middot;&nbsp;
-  <a href="https://github.com/zhouxiaoka/autoclip/releases/latest"><strong>Download</strong></a>
-  &nbsp;&middot;&nbsp;
-  <a href="https://zhouxiaoka.github.io/autoclip_intro/features/game-streams/"><strong>Live Replays (v1.6)</strong></a>
-  &nbsp;&middot;&nbsp;
-  <a href="https://zhouxiaoka.github.io/autoclip_intro/cases/?lang=en"><strong>Showcase</strong></a>
-  &nbsp;&middot;&nbsp;
-  <a href="#quick-start"><strong>Quick Start</strong></a>
-  &nbsp;&middot;&nbsp;
-  <a href="#documentation"><strong>Docs</strong></a>
-  &nbsp;&middot;&nbsp;
-  <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose"><strong>Issues</strong></a>
-</p>
-
-<p>
-  <strong>English</strong> · <a href="docs/i18n/README-ZH.md">简体中文</a> · <a href="docs/i18n/README-ZH-TW.md">繁體中文</a> · <a href="docs/i18n/README-JA.md">日本語</a> · <a href="docs/i18n/README-KO.md">한국어</a> · <a href="docs/i18n/README-ES.md">Español</a> · <a href="docs/i18n/README-PT.md">Português</a> · <a href="docs/i18n/README-RU.md">Русский</a> · <a href="docs/i18n/README-FR.md">Français</a> · <a href="docs/i18n/README-ID.md">Bahasa Indonesia</a> · <a href="docs/i18n/README-TR.md">Türkçe</a> · <a href="docs/i18n/README-VI.md">Tiếng Việt</a> · <a href="docs/i18n/README-DE.md">Deutsch</a>
-</p>
-
-<br>
-
-<p>
-  ⭐ <em>Free, MIT-licensed, zero subscriptions — everything cuts and renders on your machine. Star the repo if you find it useful!</em>
-</p>
+[![Latest release](https://img.shields.io/github/v/release/zhouxiaoka/autoclip?style=flat-square)](https://github.com/zhouxiaoka/autoclip/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
 </div>
 
 ---
 
-## Overview
+## New to AutoClip? Start here
 
-Drop in a link, local video, or **live stream replay** — AutoClip finds the best moments, tracks the speaker, burns in captions, generates covers, and exports ready-to-post clips for TikTok, Shorts, Reels, YouTube, Douyin, Xiaohongshu, and Bilibili.
+The **desktop app** is the easiest way to get started. You do not need to install Python, FFmpeg, or Docker.
 
-**Local-first by design:** cutting and rendering run directly on your computer with no upload queues and no monthly fee. Bring your own API key or run 100% offline with **Ollama / LM Studio + Whisper / SenseVoice**.
+1. **Download the app** from [GitHub Releases](https://github.com/zhouxiaoka/autoclip/releases/latest).
+   - Apple Silicon Mac: choose the `.dmg` file with `aarch64` in its name.
+   - Windows 10/11, 64-bit: choose the installer with `x64-setup.exe` in its name.
+2. **Install and open it.**
+   - Mac: open the `.dmg`, drag AutoClip Desktop to **Applications**, then open it.
+   - Windows: run the installer and follow the prompts.
+   - If your operating system shows a security warning, see [first-launch help](docs/USER_INSTALLATION_GUIDE.en.md#desktop-app-step-by-step).
+3. **Try the built-in example** from the Home screen before setting anything up. It needs no API key and lets you explore the app.
+4. **Set up AI for your own videos.** Open **Settings → AI Models**, choose a provider, enter your API key, test the connection, and save. Your provider may charge for API use.
+5. **Add a video.** Choose **File** for a video on your computer, **Link** for a supported video link, or **Live Replay** for a supported recording source.
+6. **Create and check a clip.** Add an `.srt` subtitle file if you have one, choose the output platform, confirm the suggested production type, and start generation. Review the result before exporting or sharing it.
 
-![AutoClip v1.6 Live Stream Replays Walkthrough](docs/images/v1.6/autoclip-v1.6-demo.gif)
+For screenshots, operating-system security prompts, and help with videos that have no subtitles, follow the **[step-by-step installation and first-clip guide](docs/USER_INSTALLATION_GUIDE.en.md)**.
 
-<p align="center"><em>Home → 6 Live Replay sources → OBS WebSocket setup → Twitch import → Finished clip with captions &amp; one-click publish.</em></p>
+> **Not sure about API keys?** Start with the built-in example. You only need to configure a model before processing your own video. Cloud model, transcription, or image-generation requests can incur charges from the provider you choose.
 
----
+## What AutoClip does
 
-## What's New in v1.6
+- Finds candidate moments in interviews, podcasts, talks, courses, and stream recordings.
+- Creates portrait or landscape versions for platforms such as TikTok, YouTube Shorts, Instagram Reels, Douyin, Xiaohongshu, and Bilibili.
+- Helps with speaker framing, subtitles, titles, covers, and export.
+- Imports local videos, supported links, and live-stream replays.
+- Runs video cutting and rendering on your computer.
 
-| Feature | Details |
-| :--- | :--- |
-| **6 Live Replay Sources** | Dedicated **Live Replay** tab supporting **OBS Studio, Twitch, YouTube, Kick, Discord, and local recordings**. |
-| **OBS Auto-Capture** | Connect OBS WebSocket (`4455`), trim losslessly (`-c copy`), and auto-queue clips right after you end stream. |
-| **Game Highlights** | Generalized highlight detection supporting **8s+** standalone plays with tighter vision/OCR budgets. |
-| **One-Click Repurpose** | Unified playable clip cards — switch target platforms in one click without losing previous exports. |
-| **13 Languages** | Full desktop UI, tray menus, and docs in 13 languages (`+ zh-TW, de, id, tr, vi`) plus Arabic RTL captions. |
+The interface is currently in English. Bring your own cloud API key, or configure local models with Ollama or LM Studio and local speech recognition for an offline workflow.
 
-<details>
-<summary>📸 Inside the App (5 screenshots)</summary>
+![AutoClip live replay walkthrough](docs/images/v1.6/autoclip-v1.6-demo.gif)
 
-<table width="100%">
-<tr>
-<td align="center" valign="top" width="50%">
-<img src="docs/images/v1.6/en-01-home.jpg" alt="Home screen with Link, File, and Live Replay tabs"><br>
-<em>Home screen — Link, File, and Live Replay</em>
-</td>
-<td align="center" valign="top" width="50%">
-<img src="docs/images/v1.6/en-02-replays-obs.jpg" alt="Live Replay 6-source picker"><br>
-<em>Live Replay — 6 replay sources</em>
-</td>
-</tr>
-<tr>
-<td align="center" valign="top" width="50%">
-<img src="docs/images/v1.6/en-03-replays-obs-settings.jpg" alt="Inline OBS Studio WebSocket connection settings"><br>
-<em>Inline OBS Studio WebSocket settings</em>
-</td>
-<td align="center" valign="top" width="50%">
-<img src="docs/images/v1.6/en-04-replays-twitch.jpg" alt="Twitch replay import"><br>
-<em>Twitch import &amp; local recording picker</em>
-</td>
-</tr>
-<tr>
-<td align="center" valign="top" colspan="2">
-<img src="docs/images/v1.6/en-05-result-card.jpg" width="75%" alt="Finished clip with Twitch source attribution"><br>
-<em>Finished clip — source attribution, 9:16 crop, captions, and one-click Download / Publish / Redo</em>
-</td>
-</tr>
-</table>
+*Home screen, live replay sources, OBS setup, replay import, and a finished clip.*
 
-</details>
+See more real outputs in the **[AutoClip showcase](https://zhouxiaoka.github.io/autoclip_intro/cases/?lang=en)**. Media shown in examples belongs to its respective owners.
 
----
+## Before you start processing your own video
 
-## Examples
+- **A model is needed for AI analysis.** Configure one in Settings and test it before starting.
+- **Subtitles help.** If your video has an accurately timed `.srt` file, import it with the video. Without subtitles, configure a speech-to-text option first; the initial local speech-model download can take time and disk space.
+- **Cloud use may cost money.** AI providers set their own prices. Cloud transcription sends audio to that provider; cloud analysis sends transcript text; visual analysis sends selected frames. Read [Privacy](docs/PRIVACY.en.md) and review the provider settings before use.
+- **Check the output yourself.** Review clip boundaries, framing, subtitles, and sound before publishing.
+- **Use media you have permission to process and share.**
 
-Click any thumbnail or **▶ Play** to watch full clips rendered by AutoClip. Language labels indicate burned-in subtitle language.
+## Installation options
 
-### Vertical · Interview &amp; Podcast
+| Your computer or use case | Recommended option |
+| --- | --- |
+| Apple Silicon Mac | [Desktop app](https://github.com/zhouxiaoka/autoclip/releases/latest) |
+| Windows 10/11, 64-bit | [Desktop app](https://github.com/zhouxiaoka/autoclip/releases/latest) |
+| Linux, Intel Mac, or self-hosted web app | [Docker guide](docs/DOCKER.en.md) |
+| Terminal, scripts, or AI-agent tools | [CLI and MCP guide](docs/CLI_AND_MCP.md) |
 
-<table width="100%">
-<tr>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/gates-ezra/01.mp4?v=2026-10-01g"><img src="docs/images/demos/gates-ezra-01.jpg" width="180" alt="Bill Gates"></a><br>
-<strong>Bill Gates</strong><br>
-Interview · Douyin · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/gates-ezra/01.mp4?v=2026-10-01g">▶ Play 1:01</a> · <a href="https://www.youtube.com/watch?v=A_156w0aYtU">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/ai-labs-debate/01.mp4?v=2026-10-01g"><img src="docs/images/demos/ai-labs-debate-01.jpg" width="180" alt="AI Experts Debate"></a><br>
-<strong>AI Experts Debate</strong><br>
-Interview · Shorts · EN<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/ai-labs-debate/01.mp4?v=2026-10-01g">▶ Play 1:25</a> · <a href="https://www.youtube.com/watch?v=OhOmLqR5nN4">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/robbins-36months/01.mp4?v=2026-10-01g"><img src="docs/images/demos/robbins-36months-01.jpg" width="180" alt="Tony Robbins"></a><br>
-<strong>Tony Robbins</strong><br>
-Podcast · Douyin · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/robbins-36months/01.mp4?v=2026-10-01g">▶ Play 1:45</a> · <a href="https://www.youtube.com/watch?v=DuRcrbP3kag">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/garfield-poehler/01.mp4?v=2026-10-01g"><img src="docs/images/demos/garfield-poehler-01.jpg" width="180" alt="Andrew Garfield × Amy Poehler"></a><br>
-<strong>Garfield × Poehler</strong><br>
-Podcast · Shorts · EN<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/garfield-poehler/01.mp4?v=2026-10-01g">▶ Play 1:01</a> · <a href="https://www.youtube.com/watch?v=OJV8AaWCxQQ">Source</a>
-</td>
-</tr>
-</table>
+Desktop installers include Python and FFmpeg. They do not include cloud API credits or all optional speech-recognition models. Intel Mac and Linux users can run AutoClip using Docker or the CLI; desktop installers for these systems are not currently provided.
 
-### Landscape · Original Aspect Ratio
+### First-launch security warnings
 
-<table width="100%">
-<tr>
-<td align="center" valign="top" width="50%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/luyu-tongliya/01.mp4?v=2026-10-01g"><img src="docs/images/demos/luyu-tongliya-01.jpg" width="360" alt="Tong Liya × Lu Yu"></a><br>
-<strong>佟丽娅 × 鲁豫</strong> · 16:9 · Bilibili · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/luyu-tongliya/01.mp4?v=2026-10-01g">▶ Play 1:41</a> · <a href="https://www.bilibili.com/video/BV1qheu6kEFV/">Source</a>
-</td>
-<td align="center" valign="top" width="50%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/altman-uses-ai/01.mp4?v=2026-10-01g"><img src="docs/images/demos/altman-uses-ai-01.jpg" width="360" alt="Sam Altman"></a><br>
-<strong>Sam Altman</strong> · 16:9 · Bilibili · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/altman-uses-ai/01.mp4?v=2026-10-01g">▶ Play 2:02</a> · <a href="https://www.youtube.com/watch?v=jZh55CQwSh8">Source</a>
-</td>
-</tr>
-</table>
+Current desktop installers are not yet signed/notarized, so macOS or Windows may show a warning. Make sure the installer came from the official [AutoClip Releases page](https://github.com/zhouxiaoka/autoclip/releases/latest); do not download installers from third-party sites. See the [complete install guide](docs/USER_INSTALLATION_GUIDE.en.md#desktop-app-step-by-step) for platform-specific steps.
+
+## Privacy in brief
+
+Video cutting and rendering happen locally. What leaves your computer depends on the services you enable:
+
+- Cloud AI analysis receives transcript text.
+- Cloud speech recognition receives audio.
+- Visual analysis may send sampled video frames.
+- Analytics and crash reporting can be disabled in Settings.
+
+See the full [Privacy Policy](docs/PRIVACY.en.md) before choosing a cloud provider.
+
+## Common questions
 
 <details>
-<summary>See 10 more clips</summary>
+<summary>Is AutoClip free?</summary>
 
-<table width="100%">
-<tr>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/neumann-doac/01.mp4?v=2026-10-01g"><img src="docs/images/demos/neumann-doac-01.jpg" width="180" alt="Adam Neumann"></a><br>
-<strong>Adam Neumann</strong><br>
-Podcast · TikTok · EN<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/neumann-doac/01.mp4?v=2026-10-01g">▶ Play 0:59</a> · <a href="https://www.youtube.com/watch?v=IQ4JVWdj4Q0">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/luyu-xiaoqi/02.mp4?v=2026-10-01g"><img src="docs/images/demos/luyu-xiaoqi-02.jpg" width="180" alt="Xiao Qi × Lu Yu"></a><br>
-<strong>小奇 × 鲁豫</strong><br>
-Interview · Douyin · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/luyu-xiaoqi/02.mp4?v=2026-10-01g">▶ Play 0:50</a> · <a href="https://www.bilibili.com/video/BV1ighy6AEPz/">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/luyu-guokeyu/01.mp4?v=2026-10-01g"><img src="docs/images/demos/luyu-guokeyu-01.jpg" width="180" alt="Guo Keyu × Lu Yu"></a><br>
-<strong>郭柯宇 × 鲁豫</strong><br>
-Interview · Douyin · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/luyu-guokeyu/01.mp4?v=2026-10-01g">▶ Play 1:11</a> · <a href="https://www.bilibili.com/video/BV1LDYV6HEXR/">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/dafoe-hot-ones/01.mp4?v=2026-10-01g"><img src="docs/images/demos/dafoe-hot-ones-01.jpg" width="180" alt="Willem Dafoe"></a><br>
-<strong>Willem Dafoe</strong><br>
-Podcast · TikTok · EN<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/dafoe-hot-ones/01.mp4?v=2026-10-01g">▶ Play 1:07</a> · <a href="https://www.youtube.com/watch?v=YqugY2zTIoI">Source</a>
-</td>
-</tr>
-<tr>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/tim-luoyonghao/01.mp4?v=2026-10-01g"><img src="docs/images/demos/tim-luoyonghao-01.jpg" width="180" alt="TIM × Luo Yonghao"></a><br>
-<strong>TIM × 罗永浩</strong><br>
-Interview · Douyin · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/tim-luoyonghao/01.mp4?v=2026-10-01g">▶ Play 1:05</a> · <a href="https://www.bilibili.com/video/BV1B5xkzPEhx/">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/01.mp4?v=2026-10-01g"><img src="docs/images/demos/jensen-dwarkesh-01.jpg" width="180" alt="Jensen Huang"></a><br>
-<strong>Jensen Huang</strong><br>
-Interview · Xiaohongshu · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/01.mp4?v=2026-10-01g">▶ Play 1:17</a> · <a href="https://www.youtube.com/watch?v=Hrbq66XqtCo">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/karpathy-dwarkesh/01.mp4?v=2026-10-01g"><img src="docs/images/demos/karpathy-dwarkesh-01.jpg" width="180" alt="Andrej Karpathy"></a><br>
-<strong>Andrej Karpathy</strong><br>
-Interview · Douyin · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/karpathy-dwarkesh/01.mp4?v=2026-10-01g">▶ Play 0:43</a> · <a href="https://www.youtube.com/watch?v=lXUZvyajciY">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/apple-a20/01.mp4?v=2026-10-01g"><img src="docs/images/demos/apple-a20-01.jpg" width="180" alt="A20 Pro"></a><br>
-<strong>A20 Pro</strong><br>
-Interview · Xiaohongshu · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/apple-a20/01.mp4?v=2026-10-01g">▶ Play 2:00</a> · <a href="https://www.bilibili.com/video/BV1e4Y96FEaJ/">Source</a>
-</td>
-</tr>
-<tr>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/stallone-nyt/01.mp4?v=2026-10-01g"><img src="docs/images/demos/stallone-nyt-01.jpg" width="180" alt="Sylvester Stallone"></a><br>
-<strong>Sylvester Stallone</strong><br>
-Interview · Douyin · ZH<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/stallone-nyt/01.mp4?v=2026-10-01g">▶ Play 1:39</a> · <a href="https://www.youtube.com/watch?v=ccs-B_nTfZs">Source</a>
-</td>
-<td align="center" valign="top" width="25%">
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/mrbeast-colin-samir/01.mp4?v=2026-10-01g"><img src="docs/images/demos/mrbeast-colin-samir-01.jpg" width="180" alt="MrBeast"></a><br>
-<strong>MrBeast</strong><br>
-Podcast · TikTok · EN<br>
-<a href="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/mrbeast-colin-samir/01.mp4?v=2026-10-01g">▶ Play 1:42</a> · <a href="https://www.youtube.com/watch?v=9IQ_ldV9z_A">Source</a>
-</td>
-<td></td>
-<td></td>
-</tr>
-</table>
-
-</details>
-
-Browse 16+ clips, covers, and post copy in the **[Showcase →](https://zhouxiaoka.github.io/autoclip_intro/cases/?lang=en)**, or [share your own clips](https://github.com/zhouxiaoka/autoclip/discussions/new?category=show-and-tell). Source copyrights remain with their original creators.
-
----
-
-<a id="quick-start"></a>
-
-## Quick Start
-
-**New here? Use the desktop app.** You do not need to know Python, Docker, FFmpeg, or command lines.
-
-| Your situation | Start here | What you need |
-| :--- | :--- | :--- |
-| **Apple Silicon Mac or Windows PC** | Desktop app | macOS on Apple Silicon, or Windows 10/11 x64 |
-| **Linux, Intel Mac, or server** | Docker | Docker Desktop or Docker Engine with Compose v2 |
-| **Developer or AI-agent workflow** | CLI / MCP | Python 3.10+ (3.11 recommended) and FFmpeg |
-
-If you only want to try AutoClip, follow [Desktop App: step by step](docs/USER_INSTALLATION_GUIDE.en.md#desktop-app-step-by-step).
-
-### 1. Desktop App
-
-#### macOS
-
-1. Open **[GitHub Releases](https://github.com/zhouxiaoka/autoclip/releases/latest)**.
-2. Under **Assets**, download the file whose name contains `aarch64.dmg`.
-3. Open the downloaded `.dmg`.
-4. Drag **AutoClip Desktop** into **Applications**.
-5. Open **Applications**, right-click or Control-click **AutoClip Desktop**, choose **Open**, then confirm. This extra step is only needed because the installer is not Apple-notarized yet.
-6. Open **Settings → AI Models**, choose a provider, enter your API key, test the connection, and save. If you prefer not to add a key yet, use the built-in example.
-
-#### Windows
-
-1. Open **[GitHub Releases](https://github.com/zhouxiaoka/autoclip/releases/latest)**.
-2. Under **Assets**, download the file whose name contains `x64-setup.exe`.
-3. Double-click the downloaded installer and follow the prompts.
-4. Open AutoClip from the Start menu.
-5. Open **Settings → AI Models**, choose a provider, enter your API key, test the connection, and save. If you prefer not to add a key yet, use the built-in example.
-6. If Windows SmartScreen shows **More info**, confirm that the file came from this AutoClip Releases page, then choose **Run anyway**.
-
-**First successful clip**
-
-1. Paste a link or choose a local video.
-2. Add an `.srt` subtitle file if you have one.
-3. Choose the platform for the finished clip.
-4. Confirm the production type.
-5. Click **Generate**.
-6. Wait for processing to finish, then preview or download the result.
-
-Portable Python and FFmpeg are included in the desktop installer. You do not need to install them separately.
-
-> Installers are built publicly on GitHub Actions (`Desktop Build`) with `build-provenance.json` SHA-256 verification. Code signing and Apple notarization are tracked in [#119](https://github.com/zhouxiaoka/autoclip/issues/119).
-
-### 2. CLI &amp; MCP (Claude Code, Codex, OpenCode &amp; scripts)
-
-```bash
-uvx autoclip-mcp
-npx skills add zhouxiaoka/autoclip
-
-autoclip --version
-autoclip produce talk.mp4 --srt talk.srt --platform tiktok --portrait-style podcast --json
-autoclip outputs PROJECT_ID --export-kits
-```
-
-<details>
-<summary>Offline wheel, source install &amp; MCPB packaging</summary>
-
-```bash
-# Install from a downloaded CLI/MCP release ZIP wheel
-python3 -m venv .venv && source .venv/bin/activate
-python -m pip install -r requirements.txt
-python -m pip install --force-reinstall --no-deps autoclip_mcp-*-py3-none-any.whl
-
-# Or install from source
-python -m pip install --no-deps .
-```
-
-To build a local MCPB bundle without publishing, run `python scripts/pack_mcpb.py` (never run `smithery mcp publish` automatically).
-
-</details>
-
-
-### 3. Docker / Web
-
-Use Docker only if you cannot use the desktop installer.
-
-#### 1. Install Docker
-
-1. Install Docker Desktop on macOS or Windows, or Docker Engine on Linux.
-2. Start Docker.
-3. Confirm Docker is running:
-
-```bash
-docker --version
-docker compose version
-```
-
-Both commands should print a version. If they report “not found,” restart Docker or install it again before continuing.
-
-#### 2. Download and start AutoClip
-
-```bash
-git clone https://github.com/zhouxiaoka/autoclip.git
-cd autoclip
-cp env.example .env
-mkdir -p data logs uploads
-docker compose up -d --build
-```
-
-Wait until the command finishes. Then verify the containers:
-
-```bash
-docker compose ps
-```
-
-The app containers should not be in a restarting or exited state.
-
-#### 3. Open and configure
-
-1. Open `http://localhost:3000`.
-2. Open **Settings → AI Models**.
-3. Add and test a provider, or use the built-in example if the example is available.
-4. Upload or link a video and create your first clip.
-
-API documentation is at `http://localhost:8000/docs`. Do not open Redis or Flower ports to the public internet.
-
-For permissions, backups, updates, and troubleshooting, follow the [Docker Guide](docs/DOCKER.en.md).
-
----
-
-## Benchmarks
-
-Measured on an Apple Silicon Mac (LLM cost estimated with `qwen-plus`; excludes cloud ASR and AI image generation; check your provider bill for exact usage):
-
-| Input | Source | Time &amp; Output | Est. LLM Cost |
-| :--- | :--- | ---: | ---: |
-| **With existing subtitles** | Jensen Huang · 1h 43m (EN → Xiaohongshu) | **7.5 min / 10 clips** | **¥0.09** |
-| **No subtitles (local Whisper)** | TIM × Luo Yonghao · 2h 52m (ZH → Douyin) | 29.5 min / 10 clips | ¥0.20 |
-
----
-
-## Sponsor ❤️
-
-<table>
-  <tr>
-    <td align="center" width="140">
-      <a href="https://go.apimart.ai/tw-autoclip"><img src="docs/sponsors/apimart.png" alt="APIMart" width="88"></a><br>
-      <a href="https://go.apimart.ai/tw-autoclip"><strong>APIMart</strong></a>
-    </td>
-    <td>
-      Thanks to <strong>APIMart</strong> for sponsoring AutoClip! <strong>APIMart</strong> is a low-cost API platform for AI image &amp; video generation — GPT-Image-2 from <strong>$0.006/image</strong> (<strong>160+</strong> images per dollar). One async API covers both image and video: submit a task, get an ID, fetch results via polling or callback. Batch tens of thousands of images without timeouts and switch models without changing code. Pay-as-you-go with no monthly fee — <a href="https://go.apimart.ai/tw-autoclip">sign up here</a>.
-    </td>
-  </tr>
-</table>
-
-## Cloud Transcription (Alibaba Cloud)
-
-*Affiliate link (separate from the sponsor above):* sign up on Alibaba Cloud, create an API key in the Bailian console, and enable Bailian cloud ASR under **Settings → Default models → Speech to subtitles**.
-
-1. [Alibaba Cloud signup](https://www.aliyun.com/benefit?userCode=qmyj6jch) (affiliate link)
-2. [Bailian console](https://bailian.console.aliyun.com/) — create your API key
-
----
-
-## FAQ
-
-<details>
-<summary>Is AutoClip free? Do I need an API key?</summary>
-
-Yes — AutoClip is free and MIT-licensed. Cloud analysis, transcription, and AI covers use your own API keys at provider rates (local cover layout is free by default). Ollama and LM Studio require no cloud key. Direct publishing uses your own Bilibili or [Upload-Post](https://www.upload-post.com) account.
+The app is free and open source under the MIT license. Cloud AI providers may charge for their services. Local models avoid provider API charges but use your computer's resources.
 
 </details>
 
 <details>
-<summary>Does my video get uploaded to the cloud?</summary>
+<summary>Do I need an API key to try it?</summary>
 
-Cutting and rendering run locally. Cloud analysis only sends transcript text; vision models only receive sampled frames; cloud ASR uploads audio. Running local LLMs + Whisper / SenseVoice keeps everything offline. Analytics and crash reports can be turned off in Settings. See [Privacy](docs/PRIVACY.en.md).
-
-</details>
-
-<details>
-<summary>What kind of videos work best?</summary>
-
-Podcasts, interviews, talks, courses, and gaming live stream replays (OBS / Twitch / YouTube / Kick / Discord). Sources with existing subtitles are fastest; otherwise use local Whisper / SenseVoice or cloud ASR. For gameplay or low-dialogue streams, enable a vision-capable model.
+No. Use the built-in example project first. To analyze your own video with a cloud model, you need an API key from that provider. Local model setups are also available.
 
 </details>
 
 <details>
-<summary>Why weren't any clips generated?</summary>
+<summary>Does AutoClip upload my whole video?</summary>
 
-Check the failed stage: subtitles/transcription, model connection, FFmpeg, disk space, or platform length limits (YouTube long-form requires ≥180s; use Shorts, TikTok, or Bilibili for shorter clips). If it still fails, open an issue with `autoclip --version`, OS, model, and redacted logs, or check [Known Issues (#96)](https://github.com/zhouxiaoka/autoclip/issues/96).
+Cutting and rendering are local. Cloud AI analysis sends transcript text, cloud transcription sends audio, and visual analysis can send sampled frames. Use local models and local speech recognition if you want to keep those steps on your computer. See the [Privacy Policy](docs/PRIVACY.en.md).
 
 </details>
 
-[Troubleshooting](docs/FAQ.en.md) · [Known Issues](https://github.com/zhouxiaoka/autoclip/issues/96)
+<details>
+<summary>Why is my first video taking a long time?</summary>
 
----
+The first run may need to download speech-recognition components or models. Cloud provider response time and your computer's hardware also affect processing time. Start with a short video that already has an `.srt` subtitle file to avoid waiting for speech recognition.
 
-<a id="documentation"></a>
+</details>
+
+<details>
+<summary>What should I do if generation fails?</summary>
+
+Read the error shown in the app and check the failed stage: subtitles, model connection, video processing, or export. Then follow the [Troubleshooting Guide](docs/FAQ.en.md). If you report a bug, include your operating system, AutoClip version, the failed step, and sanitized logs. Never post API keys or private video.
+
+</details>
 
 ## Documentation
 
-| Topic | Guide |
-| :--- | :--- |
-| Install &amp; first clips | [Installation Guide](docs/USER_INSTALLATION_GUIDE.en.md) |
-| Self-hosting &amp; agents | [Docker](docs/DOCKER.en.md) · [CLI &amp; MCP](docs/CLI_AND_MCP.md) (ZH) · [Agent Skill](skills/autoclip/SKILL.md) (ZH) · [OpenCode](docs/OPENCODE.en.md) |
-| Models &amp; troubleshooting | [Multi-LLM Setup](docs/MULTI_LLM_PROVIDER_GUIDE.md) (ZH) · [FAQ](docs/FAQ.en.md) |
-| Releases &amp; privacy | [Changelog](CHANGELOG.md) · [Roadmap](docs/ROADMAP.md) (ZH) · [Community Board](docs/COMMUNITY_BOARD.md) (ZH) · [Privacy](docs/PRIVACY.en.md) |
-| Research | [Pick the Moment, Not the Effect](docs/research/2026-10-what-drives-views/article-en.md) · [中文](docs/research/2026-10-what-drives-views/article-zh.md) |
-| Contributing &amp; i18n | [Contributing](CONTRIBUTING.md) (ZH) · [Translation Guide](docs/i18n.md) (ZH) |
+| I want to... | Read |
+| --- | --- |
+| Install AutoClip and make a first clip | [Beginner installation guide](docs/USER_INSTALLATION_GUIDE.en.md) |
+| Fix a problem | [Troubleshooting FAQ](docs/FAQ.en.md) |
+| Run AutoClip with Docker | [Docker guide](docs/DOCKER.en.md) |
+| Use the command line or MCP | [CLI and MCP guide (Chinese)](docs/CLI_AND_MCP.md) |
+| Configure AI providers | [Provider setup (Chinese)](docs/MULTI_LLM_PROVIDER_GUIDE.md) |
+| Understand privacy | [Privacy policy](docs/PRIVACY.en.md) |
+| See the project roadmap | [Roadmap (Chinese)](docs/ROADMAP.md) |
+| Browse example outputs | [Showcase](https://zhouxiaoka.github.io/autoclip_intro/cases/?lang=en) |
 
-## Contribute
+Some developer and project-planning documents are currently available only in Chinese.
 
-PRs, bug reports, sample clips, and translations are welcome. If AutoClip saves you time, a ⭐ star helps!
+## Community and contributions
 
-- **Community:** [GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [First-Clip Q&amp;A](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Feature Ideas](https://github.com/zhouxiaoka/autoclip/discussions/129)
-- **Bug reports:** use the [issue template](https://github.com/zhouxiaoka/autoclip/issues/new/choose) with OS, version, model, repro steps, and redacted logs
-- **Partnerships:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
+- Ask a question or share an idea in [GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions).
+- See [known issues](https://github.com/zhouxiaoka/autoclip/issues/96).
+- [Report a bug](https://github.com/zhouxiaoka/autoclip/issues/new/choose).
+- Contributions and translations are welcome. Read [Contributing](CONTRIBUTING.md).
 
-AutoClip is maintained solo — please expect async replies (no live or 1-on-1 setup support).
+## License
 
-![Star History](https://api.star-history.com/svg?repos=zhouxiaoka/autoclip&type=Date)
-
-Built with FastAPI, React, Tauri, FFmpeg, yt-dlp, Whisper, and FunASR. [MIT License](LICENSE).
+AutoClip is released under the [MIT License](LICENSE).
