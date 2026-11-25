@@ -10,7 +10,7 @@ import StudioPublishPreview from './StudioPublishPreview'
 import { outputAnalytics, studioPublishPreviewPath } from './outputVariantPublish'
 import PlayerBar from './PlayerBar'
 import ExportCover, { ExportCoverButton } from './ExportCover'
-import { CropPoint, Draft, Scene, SubtitleCue, languages, draftDuration, draftError, moveScene, applyCandidate, appendCandidates, portraitDesign, cropAt, frameModeAt, patchShot } from './types'
+import { CropPoint, Draft, Scene, StoryRole, SubtitleCue, STORY_ROLES, languages, storyboardRoleCounts, draftDuration, draftError, moveScene, applyCandidate, appendCandidates, portraitDesign, cropAt, frameModeAt, patchShot } from './types'
 import CandidatePicker from './CandidatePicker'
 import TitleArtwork from './TitleArtwork'
 import DraftVariantDialog from './DraftVariantDialog'
@@ -226,6 +226,7 @@ function Editor({ projectId, draftId }: { projectId: string; draftId: string }) 
   const coverVariant = workspace.output_variants?.find(v => v.render_job_id === currentJob?.job_id && (!variantId || v.id === variantId))
   const activeCue = cues.find(c => c.start <= currentTime && currentTime < c.end)
   const updateScene = (i: number, update: Partial<Scene>) => patch({ scenes: draft.scenes.map((s, index) => index === i ? {...s,...update} : s) })
+  const storyCounts = storyboardRoleCounts(draft.scenes)
   return <div className="ac-page studio-editor-page">
     <button className="ac-back" onClick={() => navigate(`/project/${projectId}`)}>{t("‹ 返回项目")}</button>
     <header className="studio-row studio-editor-head"><div><h1 className="ac-title">{draft.title}</h1><span className="studio-muted">{dirty ? t("有修改未保存 · 本机暂存") : t("草稿已保存")} · V{draft.revision} · {fmtDuration(draftDuration(draft))}</span></div><div className="studio-actions"><Btn variant="text" disabled={!!busy} onClick={() => setShowVariant(true)}>{t("另存为新版本")}</Btn><Btn disabled={!!busy || !dirty} loading={busy==='save'} onClick={() => perform('save', async () => {await save()})}>{t("保存草稿")}</Btn><Btn variant={previewUrl ? undefined : 'cta'} disabled={!!busy} onClick={() => setShowExport(true)}>{previewUrl ? t("查看已导出") : t("导出成片")}</Btn>{previewUrl && currentJob && <Btn variant="cta" onClick={() => navigate(studioPublishPreviewPath(projectId, draftId, currentJob.job_id, coverVariant?.id))}>{t('发布')}</Btn>}</div></header>
@@ -251,8 +252,20 @@ function Editor({ projectId, draftId }: { projectId: string; draftId: string }) 
       <div className="studio-prompt"><input aria-label={t("文案修改要求")} placeholder={t("告诉 AI 怎么改文案，例如：开头改成一个简短的问题")} value={instruction} onChange={e=>setInstruction(e.target.value)} /><Btn variant="cta" loading={busy==='rewrite'} disabled={!instruction.trim()} onClick={rewrite}>{t("改一版文案")}</Btn></div>
       {undo && <Btn variant="text" onClick={()=>{setDraft({...undo, revision:draft.revision});setUndo(null);setShowRendered(false)}}>{t("撤销上次修改")}</Btn>}
       <details className="studio-details studio-source-details"><summary>{t("调整镜头")}{' '}<span className="ac-mono">{draft.scenes.length}</span>{' '}{t("· 顺序与起止点")}</summary>
+        <section className="studio-storyboard" aria-labelledby="studio-storyboard-title">
+          <div>
+            <h2 id="studio-storyboard-title">{t("分镜结构")}</h2>
+            <p className="studio-muted">{t("为每个镜头选择故事角色，并按故事顺序排列。角色仅用于规划，不会自动添加画面文字。")}</p>
+          </div>
+          <div className="studio-storyboard-steps">
+            {STORY_ROLES.map(({ value, label }) => <div className="studio-storyboard-step" key={value}>
+              <span>{t(label)}</span>
+              <span className="ac-mono">{storyCounts[value] || t("未分配")}</span>
+            </div>)}
+          </div>
+        </section>
         <Btn size="sm" disabled={draft.scenes.length >= 30} onClick={() => setPicker('append')}>{t("追加镜头")}</Btn>
-        {draft.scenes.map((s,i)=><div className="studio-scene-row" key={s.id}><Btn size="sm" onClick={()=>{setSelected(i);setShowRendered(false)}}>{i+1}. {s.label}</Btn><label>{t("起点（秒）")}<input type="number" min={0} step={.1} value={s.start} onChange={e=>updateScene(i,{start:Number(e.target.value)})}/></label><label>{t("终点（秒）")}<input type="number" min={0} step={.1} value={s.end} onChange={e=>updateScene(i,{end:Number(e.target.value)})}/></label><div className="studio-actions"><Btn size="sm" onClick={() => setPicker(i)}>{t("替换")}</Btn><Btn size="sm" disabled={i===0} onClick={()=>patch({scenes:moveScene(draft,i,-1).scenes})}>{t("上移")}</Btn><Btn size="sm" disabled={i===draft.scenes.length-1} onClick={()=>patch({scenes:moveScene(draft,i,1).scenes})}>{t("下移")}</Btn><Btn size="sm" disabled={draft.scenes.length===1} onClick={()=>{patch({scenes:draft.scenes.filter((_,index)=>index!==i)});setSelected(0)}}>{t("移除")}</Btn></div></div>)}
+        {draft.scenes.map((s,i)=><div className="studio-scene-row" key={s.id}><Btn size="sm" onClick={()=>{setSelected(i);setShowRendered(false)}}>{i+1}. {s.label}</Btn><label>{t("起点（秒）")}<input type="number" min={0} step={.1} value={s.start} onChange={e=>updateScene(i,{start:Number(e.target.value)})}/></label><label>{t("终点（秒）")}<input type="number" min={0} step={.1} value={s.end} onChange={e=>updateScene(i,{end:Number(e.target.value)})}/></label><label className="studio-scene-role">{t("故事角色")}<select aria-label={`${t("故事角色")} ${i + 1}`} value={s.story_role || ''} onChange={e=>updateScene(i,{story_role:(e.target.value || null) as StoryRole | null})}><option value="">{t("未分配")}</option>{STORY_ROLES.map(({value,label})=><option key={value} value={value}>{t(label)}</option>)}</select></label><div className="studio-actions"><Btn size="sm" onClick={() => setPicker(i)}>{t("替换")}</Btn><Btn size="sm" disabled={i===0} onClick={()=>patch({scenes:moveScene(draft,i,-1).scenes})}>{t("上移")}</Btn><Btn size="sm" disabled={i===draft.scenes.length-1} onClick={()=>patch({scenes:moveScene(draft,i,1).scenes})}>{t("下移")}</Btn><Btn size="sm" disabled={draft.scenes.length===1} onClick={()=>{patch({scenes:draft.scenes.filter((_,index)=>index!==i)});setSelected(0)}}>{t("移除")}</Btn></div></div>)}
       </details>
       </section>
       <DraftSettingsPanel templateEditable={templatesOn} draft={draft} patch={patch} scene={scene} currentTime={currentTime} onShot={setShot}

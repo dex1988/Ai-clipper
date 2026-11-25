@@ -9,11 +9,19 @@ test('scene reorder preserves source ranges and does not mutate original',()=>{c
 test('invalid boundaries and empty title block save/export',()=>{assert.ok(draftError({...draft,title:'  '}));assert.ok(draftError({...draft,scenes:[{start:4,end:2}]}));assert.ok(draftError({...draft,scenes:[{start:NaN,end:3}]}));assert.equal(draftError(draft),null)})
 const {applyCandidate}=m.exports
 const candidate={id:'visual-event',kind:'visual',label:'Obstacle',start:7,end:10,evidence:'Source evidence'}
+test('storyboard summaries count assigned roles and leave missing sections visible',()=>{
+ const counts=m.exports.storyboardRoleCounts([
+  {...candidate,story_role:'hook'},
+  {...candidate,story_role:'gameplay'},
+  {...candidate,story_role:'gameplay'},
+ ])
+ assert.deepEqual(counts,{hook:1,gameplay:2,payoff:0,cta:0})
+})
 test('candidate replacement preserves text and other scenes without leaking candidate-only fields',()=>{
- const original={...draft,hook:'My hook',language:'en'}
+ const original={...draft,hook:'My hook',language:'en',scenes:[{...draft.scenes[0],story_role:'hook'},draft.scenes[1]]}
  const next=applyCandidate(original,candidate,0,'new-scene')
  assert.equal(next.hook,'My hook');assert.equal(next.language,'en')
- assert.deepEqual(next.scenes[0],{id:'new-scene',label:'Obstacle',start:7,end:10,evidence:'Source evidence'})
+ assert.deepEqual(next.scenes[0],{id:'new-scene',label:'Obstacle',start:7,end:10,evidence:'Source evidence',story_role:'hook'})
  assert.equal(next.scenes[1],original.scenes[1]);assert.equal(original.scenes[0].start,0)
 })
 test('appending the same source twice gives independent scene identities and enforces limits',()=>{

@@ -45,6 +45,19 @@ def test_restart_turns_running_jobs_into_retryable_failures(root):
 def test_reject_invalid_scene(start,end):
     with pytest.raises(ValidationError): Scene(id='bad',start=start,end=end)
 
+def test_scene_story_role_is_optional_and_rejects_unknown_roles():
+    assert Scene(id='s1', start=0, end=1).story_role is None
+    assert Scene(id='s1', start=0, end=1, story_role='gameplay').story_role == 'gameplay'
+    with pytest.raises(ValidationError):
+        Scene(id='s1', start=0, end=1, story_role='unknown')
+
+def test_draft_story_role_survives_store_save_and_reload(root):
+    value = draft()
+    value.scenes[0].story_role = 'payoff'
+    saved = store.save_draft('p1', value, create=True)
+    assert saved['scenes'][0]['story_role'] == 'payoff'
+    assert store.read('p1')['drafts'][0]['scenes'][0]['story_role'] == 'payoff'
+
 def test_no_path_traversal(root):
     with pytest.raises(ValueError): store.directory('../another-project')
 
@@ -207,6 +220,21 @@ def test_api_legacy_adapter_conflict_and_source(client):
     assert client.put('/studio/p1/drafts/'+d['id'],json=d).status_code==409
     assert client.get('/studio/p1/source').headers['content-type']=='video/mp4'
     assert len(client.get('/studio/p1').json()['drafts'])==1
+
+def test_api_draft_story_role_survives_save_and_rejects_unknown_values(client):
+    created = client.post('/studio/p1/drafts', json={'clip_ids':['c1'], 'title':'Storyboard'})
+    assert created.status_code == 200
+    draft = created.json()
+    draft['scenes'][0]['story_role'] = 'payoff'
+    saved = client.put(f"/studio/p1/drafts/{draft['id']}", json=draft)
+    assert saved.status_code == 200
+    assert saved.json()['scenes'][0]['story_role'] == 'payoff'
+    workspace = client.get('/studio/p1').json()
+    assert workspace['drafts'][0]['scenes'][0]['story_role'] == 'payoff'
+    invalid = saved.json()
+    invalid['scenes'][0]['story_role'] = 'unknown'
+    assert client.put(f"/studio/p1/drafts/{draft['id']}", json=invalid).status_code == 422
+    assert client.get('/studio/p1').json()['drafts'][0]['scenes'][0]['story_role'] == 'payoff'
 
 def test_api_export_runs_real_worker_and_survives_poll(client,root):
     import time

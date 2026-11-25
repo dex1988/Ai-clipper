@@ -19,6 +19,7 @@ def _without_removed_caption_keys(value, keys: frozenset[str]):
 
 Goal = Literal['content', 'highlight', 'promo']
 Language = Literal['source', 'zh', 'en', 'ja']
+StoryRole = Literal['hook', 'gameplay', 'payoff', 'cta']
 
 class Preferences(BaseModel):
     model_config = ConfigDict(extra='forbid')
@@ -47,6 +48,7 @@ class Scene(BaseModel):
     start: float = Field(ge=0)
     end: float = Field(gt=0)
     evidence: str = Field(default='', max_length=1000)
+    story_role: StoryRole | None = None
     # Per-scene horizontal framing for the crop layout (0 = left, 1 = right); None follows the draft.
     crop_x: float | None = Field(default=None, ge=0, le=1, allow_inf_nan=False)
     # Speaker-following framing: piecewise-constant crop_x over the scene. Empty/None = static crop_x.

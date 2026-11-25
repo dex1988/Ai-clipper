@@ -3,6 +3,13 @@ import type { AttemptReceipt } from '../../analytics/workflow'
 export type Goal = 'content' | 'highlight' | 'promo'
 export type Language = 'source' | 'zh' | 'en' | 'ja'
 export type SubtitleStyle = 'clean' | 'bold' | 'box' | 'accent'
+export type StoryRole = 'hook' | 'gameplay' | 'payoff' | 'cta'
+export const STORY_ROLES: { value: StoryRole; label: string }[] = [
+  { value: 'hook', label: '开场钩子' },
+  { value: 'gameplay', label: '玩法展示' },
+  { value: 'payoff', label: '结果反馈' },
+  { value: 'cta', label: '行动号召' },
+]
 export const subtitleStyles: { value: SubtitleStyle; label: string }[] = [{ value: 'clean', label: '简洁描边' }, { value: 'bold', label: '粗体大字' }, { value: 'box', label: '底色字幕条' }, { value: 'accent', label: '醒目黄字' }]
 export interface SubtitleCue { start: number; end: number; text: string }
 export interface FramingStatus { status: 'installed' | 'not_installed' | 'installing' | 'error'; progress: number; message: string; size_mb: number; cooldown_seconds?: number }
@@ -10,7 +17,13 @@ export interface AutoFrameResult { window_fraction: number; scenes: { id: string
 export type FrameMode = 'crop' | 'fit'
 /** One shot of a scene: from `start` (seconds into the scene) until the next point. `fit` shows the whole frame. `ease` is how long the pan into this crop takes; 0 is a cut. */
 export interface CropPoint { start: number; crop_x: number; mode?: FrameMode; ease?: number }
-export interface Scene { framing_source?: 'auto' | 'manual' | null; framing_adjusted?: boolean; id: string; label: string; start: number; end: number; evidence: string; crop_x?: number | null; crop_track?: CropPoint[] | null }
+export interface Scene { framing_source?: 'auto' | 'manual' | null; framing_adjusted?: boolean; story_role?: StoryRole | null; id: string; label: string; start: number; end: number; evidence: string; crop_x?: number | null; crop_track?: CropPoint[] | null }
+export function storyboardRoleCounts(scenes: Scene[]): Record<StoryRole, number> {
+  return STORY_ROLES.reduce((counts, { value }) => {
+    counts[value] = scenes.filter(scene => scene.story_role === value).length
+    return counts
+  }, { hook: 0, gameplay: 0, payoff: 0, cta: 0 })
+}
 /** Index of the track point covering `time` (absolute seconds), or -1 without a track. */
 export function shotIndexAt(scene: Scene | undefined, time: number): number {
   const track = scene?.crop_track || []
@@ -159,7 +172,7 @@ export function moveScene(draft: Draft, index: number, delta: number): Draft {
 export function applyCandidate(draft: Draft, candidate: Candidate, target: number | 'append', newId: string): Draft {
   const scene: Scene = { id: newId, label: candidate.label, start: candidate.start, end: candidate.end, evidence: candidate.evidence }
   if (target !== 'append' && (target < 0 || target >= draft.scenes.length)) throw new Error('要替换的镜头已不存在')
-  const scenes = target === 'append' ? [...draft.scenes, scene] : draft.scenes.map((s, i) => i === target ? scene : s)
+  const scenes = target === 'append' ? [...draft.scenes, scene] : draft.scenes.map((s, i) => i === target ? { ...scene, story_role: s.story_role } : s)
   const result = { ...draft, scenes }
   const invalid = draftError(result)
   if (invalid) throw new Error(invalid)

@@ -111,6 +111,15 @@
 .studio-editor-main{min-width:0;position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto;padding-right:2px}
 .studio-editor-main .studio-prompt{margin-top:22px}
 .studio-editor-main .studio-source-details{margin-top:22px}
+.studio-storyboard{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(180px,.8fr);gap:20px;margin:16px 0 20px;padding:16px 0;border-bottom:1px solid var(--ac-line)}
+.studio-storyboard h2{margin:0;color:var(--ac-ink);font-size:14px;font-weight:600}
+.studio-storyboard p{margin:6px 0 0}
+.studio-storyboard-steps{display:grid;align-content:start}
+.studio-storyboard-step{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--ac-line-2);font-size:12.5px}
+.studio-storyboard-step:last-child{border-bottom:0}
+.studio-storyboard-step .ac-mono{color:var(--ac-muted)}
+.studio-scene-row .studio-scene-role{min-width:150px}
+.studio-scene-role select{width:100%;border:1px solid var(--ac-line);border-radius:9px;background:var(--ac-card);color:var(--ac-ink);padding:9px 10px;font:inherit}
 .studio-readiness{display:flex;flex-direction:column;gap:10px;margin:16px 0 2px;padding:12px 14px;border:1px solid var(--ac-line);border-radius:12px;background:var(--ac-bg)}
 .studio-readiness-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .studio-diagnose{display:flex;flex-direction:column;gap:12px}
@@ -128,6 +137,7 @@
 .ac-dropzone-file-label{position:relative;display:inline-flex;color:var(--ac-accent);cursor:pointer;font-size:13px}
 .ac-dropzone-file-label input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 .ac-platform-line{display:flex;align-items:baseline;justify-content:space-between;gap:var(--ac-space-md);margin:var(--ac-space-lg) 0 var(--ac-space-sm);color:var(--ac-ink);font-size:15px;line-height:1.5}
+@media(max-width:700px){.studio-storyboard{grid-template-columns:1fr;gap:10px}}
 .ac-platform-line p{margin:0}
 .ac-undo{display:flex;align-items:center;justify-content:space-between;gap:var(--ac-space-md);margin-top:var(--ac-space-md);padding:var(--ac-space-md) var(--ac-space-lg);border-radius:var(--ac-radius-sm);background:var(--ac-ink);color:var(--ac-bg)}
 .ac-undo-action{border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}

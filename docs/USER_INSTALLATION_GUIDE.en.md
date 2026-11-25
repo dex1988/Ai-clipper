@@ -112,9 +112,10 @@ For Ollama or LM Studio, start the local model server and load a model first. Th
 9. Keep AutoClip open while the clip is processing.
 10. Wait for the status to show completion.
 11. Open the finished result in the preview.
-12. Check the start time, end time, framing, title, and subtitles.
-13. Choose **Export** or **Download** and save the final file.
-14. Open the saved file once and verify that the picture and sound are correct.
+12. Optional: In the Studio editor, open **Adjust shots**. Assign story roles such as **Opening hook**, **Gameplay**, **Payoff**, or **Call to action**, then use **Up** and **Down** to arrange the scenes. These are planning notes only; they do not add text to the video, and unassigned roles do not block export.
+13. Check the start time, end time, framing, title, and subtitles.
+14. Choose **Export** or **Download** and save the final file.
+15. Open the saved file once and verify that the picture and sound are correct.
 
 If your video has no subtitles:
 
