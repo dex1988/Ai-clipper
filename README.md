@@ -2,15 +2,13 @@
 
 # AI Clipper
 
-### A beginner-friendly community fork of AutoClip
+### A beginner-friendly desktop app for making short clips
 
-AI Clipper is the repository name for this independent fork of
-[AutoClip](https://github.com/zhouxiaoka/autoclip), an open-source app for
-turning long videos and stream replays into short clips.
+AI Clipper helps turn long videos and stream recordings into short clips you
+can review, edit, and share.
 
-[Browse this fork's source](https://github.com/dex1988/Ai-clipper) ·
-[Upstream AutoClip project](https://github.com/zhouxiaoka/autoclip) ·
-[Upstream installation guide](docs/USER_INSTALLATION_GUIDE.en.md) ·
+[Browse the source](https://github.com/dex1988/Ai-clipper) ·
+[Installation guide](docs/USER_INSTALLATION_GUIDE.en.md) ·
 [Troubleshooting](docs/FAQ.en.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
@@ -19,12 +17,11 @@ turning long videos and stream replays into short clips.
 
 ---
 
-> **This is a fork, not an official AutoClip release.** This repository does
-> not currently publish its own installer packages. The upstream releases
-> linked in the installation guide are built by the original project and do
-> not include changes made only in this fork.
+> **No installer packages are published for this repository yet.** The
+> prebuilt packages described in the installation guide are separate builds
+> and do not include changes made only in this source.
 
-## What this fork adds
+## What this project includes
 
 - Beginner-oriented English setup and first-run guidance.
 - Studio editing that can add multiple selected shot candidates to a draft.
@@ -32,9 +29,8 @@ turning long videos and stream replays into short clips.
   **Call to action**—to help plan scene order. These are notes for editing;
   they do not add text to the exported video or block export when left blank.
 
-The app is still based on AutoClip, and some in-app names or assets may retain
-the original branding. This README describes this repository; it does not
-rebrand the application itself.
+Some in-app names or assets may still use legacy branding; this README
+describes the repository's current name, not a complete in-app rebrand.
 
 ## What the app does
 
@@ -53,16 +49,15 @@ your configuration. For details, read the [Privacy Policy](docs/PRIVACY.en.md).
 
 ### I want to try a prebuilt app
 
-There are no installers published by this fork yet. You can download a
-prebuilt app from the [upstream AutoClip Releases page](https://github.com/zhouxiaoka/autoclip/releases/latest),
-but that app is an upstream build—not AI Clipper with this fork's changes.
-The [step-by-step installation guide](docs/USER_INSTALLATION_GUIDE.en.md)
-covers those upstream packages.
+There are no installers published for this repository yet. The
+[step-by-step installation guide](docs/USER_INSTALLATION_GUIDE.en.md) explains
+the available prebuilt installation option. Those packages are not built from
+this source and do not include repository-specific changes.
 
-### I want to run this fork
+### I want to run this version
 
-Running fork-specific changes requires setting up and building the source
-code. Start with the repository's [contributor guide](CONTRIBUTING.md) and
+Running this version requires setting up and building the source code. Start
+with the repository's [contributor guide](CONTRIBUTING.md) and
 [desktop build guide](docs/BUILD_GUIDE.md). These are developer instructions,
 not a one-click beginner installer; the build documentation is currently in
 Chinese.
@@ -82,15 +77,12 @@ Chinese.
 
 | I want to... | Read |
 | --- | --- |
-| Install an upstream prebuilt app | [Beginner installation guide](docs/USER_INSTALLATION_GUIDE.en.md) |
+| Install an available prebuilt app | [Beginner installation guide](docs/USER_INSTALLATION_GUIDE.en.md) |
 | Troubleshoot a problem | [FAQ](docs/FAQ.en.md) |
 | Understand data handling | [Privacy Policy](docs/PRIVACY.en.md) |
-| Build or contribute to this fork | [Contributor guide](CONTRIBUTING.md) |
-| Learn about the original project | [Upstream AutoClip](https://github.com/zhouxiaoka/autoclip) |
+| Build or contribute to this project | [Contributor guide](CONTRIBUTING.md) |
 
-## Original project and license
+## License
 
-This fork is based on [AutoClip](https://github.com/zhouxiaoka/autoclip).
-The original project's MIT license and notices are retained in
-[LICENSE](LICENSE). This fork is independently maintained and is not affiliated
-with or endorsed by the upstream maintainers.
+This project is distributed under the MIT License. Copyright and attribution
+notices are retained in [LICENSE](LICENSE).
