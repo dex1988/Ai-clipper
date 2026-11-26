@@ -153,10 +153,7 @@ When our data practices change, we will update this policy and revise the "Last 
 
 ## 12. Contact Us
 
-For any questions, comments, or complaints about this Privacy Policy or our handling of personal information, contact:
-
-- Email: **christine95zhouye@gmail.com**
-- Website: **https://zhouxiaoka.github.io/autoclip_intro/**
+This repository does not currently publish a dedicated contact channel for privacy questions.
 
 ---
 

@@ -345,7 +345,6 @@ Perbaikan, contoh klip, masukan, dan penyempurnaan terjemahan sangat diterima. J
 
 - **Diskusi:** [GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [Tanya jawab klip pertama](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Ide](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **Bug:** gunakan [formulir isu](https://github.com/zhouxiaoka/autoclip/issues/new/choose) beserta sistem operasi, versi, model, langkah reproduksi, dan log yang telah disamarkan
-- **Kemitraan:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 Dikelola oleh satu orang. Balasan tidak selalu instan; tidak tersedia dukungan langsung (live support) atau bantuan deployment satu-per-satu.
 

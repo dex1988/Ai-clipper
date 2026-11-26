@@ -332,7 +332,6 @@ docker compose up -d --build
 
 - **Общение:** [Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [Первый клип](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Идеи](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **Баги:** [форма](https://github.com/zhouxiaoka/autoclip/issues/new/choose) с ОС, версией, моделью, шагами и журналами без секретов
-- **Партнёрство:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 Ведёт один человек. Живой поддержки и личного деплоя нет.
 

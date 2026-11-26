@@ -370,7 +370,6 @@ Hata düzeltmeleri, klip örnekleri, geri bildirimler ve çeviri iyileştirmeler
 
 - **Sohbet:** [GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [İlk klip soruları](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Fikirler](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **Hatalar:** işletim sistemi, sürüm, model, adımlar ve temizlenmiş günlüklerle [issue formunu](https://github.com/zhouxiaoka/autoclip/issues/new/choose) kullanın
-- **İş birlikleri:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 Tek kişi tarafından sürdürülüyor. Yanıtlar anında gelmez; canlı destek veya birebir kurulum yardımı yoktur.
 

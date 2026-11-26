@@ -345,7 +345,6 @@ Fixes, Clip-Beispiele, Feedback und Verbesserungen an Übersetzungen sind herzli
 
 - **Austausch:** [GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [First-clip Q&A](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Ideen](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **Bugs:** Nutze das [Issue-Formular](https://github.com/zhouxiaoka/autoclip/issues/new/choose) mit Betriebssystem, Version, Modell, Schritten zur Reproduktion und bereinigten Logs
-- **Partnerschaften:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 Wird von einer einzelnen Person gepflegt. Antworten erfolgen nicht sofort; es gibt keinen Live-Support und keine Eins-zu-eins-Deployment-Hilfe.
 

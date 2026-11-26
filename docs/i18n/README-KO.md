@@ -332,7 +332,6 @@ Docker 안 `localhost`는 컨테이너입니다. 호스트 모델은 컨테이�
 
 - **이야기:** [Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [첫 클립 Q&A](https://github.com/zhouxiaoka/autoclip/discussions/128) · [아이디어](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **버그:** [이슈 양식](https://github.com/zhouxiaoka/autoclip/issues/new/choose)에 OS, 버전, 모델, 재현, 가린 로그
-- **제휴:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 개인 유지입니다. 즉시 지원이나 1:1 배포는 없습니다.
 

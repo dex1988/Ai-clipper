@@ -345,7 +345,6 @@ Chúng tôi hoan nghênh mọi bản vá lỗi, video cắt mẫu, góp ý và c
 
 - **Thảo luận:** [GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [Hỏi đáp về clip đầu tiên](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Ý tưởng](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **Báo lỗi:** sử dụng [biểu mẫu báo lỗi](https://github.com/zhouxiaoka/autoclip/issues/new/choose) kèm hệ điều hành, phiên bản, mô hình, các bước tái hiện và log đã che thông tin nhạy cảm
-- **Hợp tác:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 Dự án do một cá nhân duy trì. Phản hồi có thể không tức thì; không có hỗ trợ trực tiếp hoặc hỗ trợ triển khai 1-1.
 

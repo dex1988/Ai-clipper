@@ -87,4 +87,4 @@ git push -u origin fix/your-change
 
 ## 社区与联系
 
-尊重其他参与者，围绕问题和证据讨论；不接受骚扰、人身攻击或公开他人私人信息。一般提问优先使用社区入口，私密联系可发送至 [christine_zhouye@163.com](mailto:christine_zhouye@163.com)。
+尊重其他参与者，围绕问题和证据讨论；不接受骚扰、人身攻击或公开他人私人信息。上方社区入口属于原项目；本仓库目前未开启自己的 Issues 或 Discussions，也没有单独的私密联系渠道。

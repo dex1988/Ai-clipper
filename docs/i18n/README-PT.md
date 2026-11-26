@@ -332,7 +332,6 @@ Correções, exemplos, feedback e traduções são bem-vindos. Se o AutoClip aju
 
 - **Conversar:** [Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [Primeiro corte](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Ideias](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **Falhas:** [formulário](https://github.com/zhouxiaoka/autoclip/issues/new/choose) com SO, versão, modelo, passos e logs sem segredo
-- **Parcerias:** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 Mantido por uma pessoa. Sem suporte ao vivo nem deploy um a um.
 

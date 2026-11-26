@@ -332,7 +332,6 @@ Docker 内の `localhost` はコンテナ自身です。ホストのモデルに
 
 - **話す：** [Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [初回 Q&A](https://github.com/zhouxiaoka/autoclip/discussions/128) · [アイデア](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **不具合：** [Issue フォーム](https://github.com/zhouxiaoka/autoclip/issues/new/choose) に OS、版、モデル、手順、伏せたログ
-- **提携：** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 個人メンテです。即時サポートや個別デプロイはありません。
 

@@ -396,7 +396,6 @@ docker compose up -d --build
 
 - **提问与交流：** [GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [第一次出片问答](https://github.com/zhouxiaoka/autoclip/discussions/128) · [分享想法](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **报告故障：** 使用 [Issue 模板](https://github.com/zhouxiaoka/autoclip/issues/new/choose)，附上系统、版本、所选模型、复现步骤与已脱敏日志
-- **合作联系：** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 个人维护，回复时间不固定，不提供即时客服或一对一部署服务。
 

@@ -157,11 +157,13 @@ SELECT project_type, COUNT(*) FROM projects GROUP BY project_type;
 
 ### Where are known issues? How can I get help?
 
-Check [known issues](https://github.com/zhouxiaoka/autoclip/issues/96) and [release notes](https://github.com/zhouxiaoka/autoclip/releases) first. Feature ideas and how you use AutoClip go to [Discussions](https://github.com/zhouxiaoka/autoclip/discussions): [welcome and categories](https://github.com/zhouxiaoka/autoclip/discussions/127), [first-clip Q&A](https://github.com/zhouxiaoka/autoclip/discussions/128), and [ideas](https://github.com/zhouxiaoka/autoclip/discussions/129). Reproducible bugs go to Issues. The board rules are in the [community board](COMMUNITY_BOARD.md) (Chinese). If needed, send one email to [christine_zhouye@163.com](mailto:christine_zhouye@163.com) with:
+Check [known issues](https://github.com/zhouxiaoka/autoclip/issues/96) and [release notes](https://github.com/zhouxiaoka/autoclip/releases) first. Feature ideas and how you use AutoClip go to [Discussions](https://github.com/zhouxiaoka/autoclip/discussions): [welcome and categories](https://github.com/zhouxiaoka/autoclip/discussions/127), [first-clip Q&A](https://github.com/zhouxiaoka/autoclip/discussions/128), and [ideas](https://github.com/zhouxiaoka/autoclip/discussions/129). These channels belong to the upstream project; this repository's own Issues and Discussions are not enabled.
+
+When reporting through those upstream channels, include:
 
 - OS and CPU architecture, AutoClip version, and desktop / Docker / CLI mode.
 - Model provider and name, video source and approximate duration, and whether subtitles were supplied.
 - Reproduction steps, failed stage, and an error screenshot or relevant recent logs.
 - API keys, Cookies, private paths, and private transcript text removed from the logs.
 
-Maintained by an individual in their spare time. Response times vary; live support and one-to-one deployment assistance are not provided.
+This repository does not provide direct support.

@@ -157,11 +157,13 @@ SELECT project_type, COUNT(*) FROM projects GROUP BY project_type;
 
 ### 哪里看已知问题？怎样联系？
 
-先查 [已知问题](https://github.com/zhouxiaoka/autoclip/issues/96) 和 [版本记录](https://github.com/zhouxiaoka/autoclip/releases)。希望增加的能力、用法和模型发到 [Discussions](https://github.com/zhouxiaoka/autoclip/discussions)：[欢迎与分类](https://github.com/zhouxiaoka/autoclip/discussions/127)、[第一次出片问答](https://github.com/zhouxiaoka/autoclip/discussions/128)、[想法](https://github.com/zhouxiaoka/autoclip/discussions/129)。能复现的故障开 Issue。规则见 [社区看板](COMMUNITY_BOARD.md)。仍需联系时，将以下信息一次性发到 [christine_zhouye@163.com](mailto:christine_zhouye@163.com)：
+先查 [已知问题](https://github.com/zhouxiaoka/autoclip/issues/96) 和 [版本记录](https://github.com/zhouxiaoka/autoclip/releases)。希望增加的能力、用法和模型发到 [Discussions](https://github.com/zhouxiaoka/autoclip/discussions)：[欢迎与分类](https://github.com/zhouxiaoka/autoclip/discussions/127)、[第一次出片问答](https://github.com/zhouxiaoka/autoclip/discussions/128)、[想法](https://github.com/zhouxiaoka/autoclip/discussions/129)。这些入口属于上游项目，本仓库目前未开启自己的 Issue 或 Discussions。
+
+如通过上游入口反馈，请附上：
 
 - 系统和 CPU 架构、AutoClip 版本、桌面 / Docker / CLI 使用方式。
 - 模型提供商、模型名、视频来源与大致时长、是否提供字幕。
 - 复现步骤、失败阶段、错误截图或最近的相关日志。
 - 日志中移除 API Key、Cookies、私人路径和不希望公开的字幕内容。
 
-个人业余维护，回复时间不固定，不提供即时客服或一对一部署服务。
+本仓库目前不提供直接支持。

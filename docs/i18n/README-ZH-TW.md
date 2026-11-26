@@ -341,7 +341,6 @@ Docker 存取宿主機模型服務時，`localhost` 指向容器本身，需改�
 
 - **提問與交流**：[GitHub Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [第一次出片問答](https://github.com/zhouxiaoka/autoclip/discussions/128) · [分享想法](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **回報問題**：使用 [Issue 範本](https://github.com/zhouxiaoka/autoclip/issues/new/choose)，附上系統、版本、所選模型、重現步驟與已去識別化的日誌
-- **合作聯繫**：[christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 個人維護，回覆時間不固定，不提供即時客服或一對一部署服務。
 

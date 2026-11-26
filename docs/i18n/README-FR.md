@@ -332,7 +332,6 @@ Correctifs, exemples, retours et traductions sont les bienvenus. Si AutoClip vou
 
 - **Parler :** [Discussions](https://github.com/zhouxiaoka/autoclip/discussions) · [Premier clip](https://github.com/zhouxiaoka/autoclip/discussions/128) · [Idées](https://github.com/zhouxiaoka/autoclip/discussions/129)
 - **Bugs :** [formulaire](https://github.com/zhouxiaoka/autoclip/issues/new/choose) avec OS, version, modèle, étapes et journaux sans secrets
-- **Partenariats :** [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 Maintenu par une personne. Pas de support live ni de déploiement individuel.
 
